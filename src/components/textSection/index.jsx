@@ -72,7 +72,7 @@ const CreativeTextSection = () => {
     }, []);
 
     /** Responsive font sizes */
-    const fontSize = isMobile ? "38px" : isTablet ? "70px" : "120px";
+    const fontSize = isMobile ? "38px" : isTablet ? "70px" : "100px";
     const lineSpacingFix = isMobile ? "-5px" : isTablet ? "-10px" : "-25px";
 
     /** Responsive indent scale */
@@ -85,37 +85,36 @@ const CreativeTextSection = () => {
                 sx={{
                     width: "100%",
                     position: "relative",
-                    padding: isMobile ? "0 0 50px" : "0 0 350px",
+                    padding: isMobile ? "0 0 50px" : "0 0 150px",
                     display: "flex",
                     justifyContent: "center",
                 }}
             >
                 {/* DOODLES (RESPONSIVE POSITIONS) */}
-                {/* DOODLES (RESPONSIVE POSITIONS) */}
                 <Doodle
                     src={HeartDoodle}
                     sx={{
-                        top: isMobile ? "5%" : isTablet ? "12%" : "19%",
-                        left: isMobile ? "60%" : isTablet ? "70%" : "79%",
-                        width: isMobile ? "40px" : isTablet ? "70px" : "90px",
+                        top: isMobile ? "5%" : isTablet ? "12%" : "22%",
+                        left: isMobile ? "60%" : isTablet ? "70%" : "74%",
+                        width: isMobile ? "40px" : isTablet ? "70px" : "85px",
                     }}
                 />
 
                 <Doodle
                     src={ZigZagDoodle}
                     sx={{
-                        top: isMobile ? "28%" : isTablet ? "35%" : "43%",
-                        left: isMobile ? "20%" : isTablet ? "26%" : "31%",
-                        width: isMobile ? "220px" : isTablet ? "380px" : "570px",
+                        top: isMobile ? "28%" : isTablet ? "35%" : "49%",
+                        left: isMobile ? "20%" : isTablet ? "26%" : "34%",
+                        width: isMobile ? "220px" : isTablet ? "380px" : "510px",
                     }}
                 />
 
                 <Doodle
                     src={RandomDoodle}
                     sx={{
-                        top: isMobile ? "50%" : isTablet ? "58%" : "64%",
-                        left: isMobile ? "30%" : isTablet ? "36%" : "41%",
-                        width: isMobile ? "150px" : isTablet ? "250px" : "365px",
+                        top: isMobile ? "50%" : isTablet ? "58%" : "72%",
+                        left: isMobile ? "30%" : isTablet ? "36%" : "43%",
+                        width: isMobile ? "150px" : isTablet ? "250px" : "325px",
                     }}
                 />
 
@@ -137,7 +136,7 @@ const CreativeTextSection = () => {
                 sx={{
                     mt: isMobile ? 2 : 5,
                     position: "relative",
-                    bottom: isMobile ? "40px" : "260px",
+                    bottom: isMobile ? "40px" : "20px",
                     gap: isMobile ? 2 : 10,
                     px: isMobile ? 2 : 6,
                     flexDirection: isMobile ? "column" : "row",
@@ -155,7 +154,7 @@ const CreativeTextSection = () => {
                         display: "flex",
                         justifyContent: isMobile ? "center" : "center",
                         mb: isMobile ? 2 : 0,
-                        marginRight: isMobile ? 0 : "100px",
+                        marginRight: isMobile ? 0 : "110px",
                     }}
                 >
                     <img
