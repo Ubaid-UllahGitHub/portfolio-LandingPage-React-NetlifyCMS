@@ -34,6 +34,8 @@ function App() {
       <SmoothAlternatingSlider />
       <CreativeTextSection />
       <ManifestoSection />
+      <Header />
+      <Hero />
     </>
   );
 }
