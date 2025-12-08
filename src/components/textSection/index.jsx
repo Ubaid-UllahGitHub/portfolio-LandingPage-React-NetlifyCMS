@@ -42,6 +42,8 @@ LINES_CHARS.forEach((chars, idx) => {
 const CreativeTextSection = () => {
     const isTablet = useMediaQuery("(max-width: 1024px)");
     const isMobile = useMediaQuery("(max-width: 600px)");
+    const isBigScreen = useMediaQuery("(min-width: 1300px)");
+
 
     const containerRef = useRef(null);
     const [progress, setProgress] = useState(0);
@@ -72,7 +74,13 @@ const CreativeTextSection = () => {
     }, []);
 
     /** Responsive font sizes */
-    const fontSize = isMobile ? "38px" : isTablet ? "70px" : "100px";
+    const fontSize = isMobile
+        ? "38px"
+        : isTablet
+            ? "70px"
+            : isBigScreen
+                ? "130px"
+                : "100px";
     const lineSpacingFix = isMobile ? "-5px" : isTablet ? "-10px" : "-25px";
 
     /** Responsive indent scale */
@@ -85,7 +93,7 @@ const CreativeTextSection = () => {
                 sx={{
                     width: "100%",
                     position: "relative",
-                    padding: isMobile ? "0 0 50px" : "0 0 150px",
+                    padding: isMobile ? "0px 0px 50px 0px" : "0px 0px 80px 0px",
                     display: "flex",
                     justifyContent: "center",
                 }}
@@ -94,7 +102,7 @@ const CreativeTextSection = () => {
                 <Doodle
                     src={HeartDoodle}
                     sx={{
-                        top: isMobile ? "5%" : isTablet ? "12%" : "22%",
+                        top: isMobile ? "5%" : isTablet ? "12%" : "23%",
                         left: isMobile ? "60%" : isTablet ? "70%" : "74%",
                         width: isMobile ? "40px" : isTablet ? "70px" : "85px",
                     }}
@@ -103,7 +111,7 @@ const CreativeTextSection = () => {
                 <Doodle
                     src={ZigZagDoodle}
                     sx={{
-                        top: isMobile ? "28%" : isTablet ? "35%" : "49%",
+                        top: isMobile ? "28%" : isTablet ? "35%" : "53%",
                         left: isMobile ? "20%" : isTablet ? "26%" : "34%",
                         width: isMobile ? "220px" : isTablet ? "380px" : "510px",
                     }}
@@ -112,7 +120,7 @@ const CreativeTextSection = () => {
                 <Doodle
                     src={RandomDoodle}
                     sx={{
-                        top: isMobile ? "50%" : isTablet ? "58%" : "72%",
+                        top: isMobile ? "50%" : isTablet ? "58%" : "78%",
                         left: isMobile ? "30%" : isTablet ? "36%" : "43%",
                         width: isMobile ? "150px" : isTablet ? "250px" : "325px",
                     }}
@@ -220,7 +228,7 @@ const Doodle = ({ src, sx }) => (
         src={src}
         sx={{
             position: "absolute",
-            opacity: 0.8,
+            opacity: 1,
             zIndex: 1,
             pointerEvents: "none",
             ...sx,

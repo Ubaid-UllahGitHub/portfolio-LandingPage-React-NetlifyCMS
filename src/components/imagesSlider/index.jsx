@@ -44,7 +44,8 @@ const SmoothAlternatingSlider = () => {
      SLIDE LOGIC (INFINITE LOOP)
     -----------------------------**/
     const slide = (dir) => {
-        const moveBy = (ITEM_WIDTH_BIG + ITEM_WIDTH_SMALL) / (isXs ? 12 : isSm ? 7 : 5);
+        // Faster movement ONLY on mobile
+        const moveBy = (ITEM_WIDTH_BIG + ITEM_WIDTH_SMALL) / (isXs ? 5 : isSm ? 7 : 5);
 
         setOffset((prev) => {
             let next = dir === "left" ? prev + moveBy : prev - moveBy;
@@ -85,6 +86,73 @@ const SmoothAlternatingSlider = () => {
             return next;
         });
     };
+
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const startOffset = useRef(0);
+
+
+    /** ----------------------------------
+    DRAG / SWIPE SUPPORT (MOUSE + TOUCH)
+------------------------------------**/
+    useEffect(() => {
+        const slider = sliderRef.current;
+        if (!slider) return;
+
+        const startDrag = (x) => {
+            isDragging.current = true;
+            startX.current = x;
+            startOffset.current = offset;
+            slider.style.transition = "none"; // Disable animation while dragging
+        };
+
+        const duringDrag = (x) => {
+            if (!isDragging.current) return;
+            const diff = x - startX.current;
+            setOffset(startOffset.current + diff); // Move slider in real time
+        };
+
+        const endDrag = () => {
+            if (!isDragging.current) return;
+            isDragging.current = false;
+
+            // Smooth back to animation
+            slider.style.transition = "transform 0.55s cubic-bezier(.25,.8,.25,1)";
+
+            // Optional: auto-slide after drag release
+            // If you want:
+            // if (offset < startOffset.current) slide("right");
+            // else slide("left");
+        };
+
+        // MOUSE EVENTS
+        slider.addEventListener("mousedown", (e) => startDrag(e.clientX));
+        window.addEventListener("mousemove", (e) => duringDrag(e.clientX));
+        window.addEventListener("mouseup", endDrag);
+
+        // TOUCH EVENTS
+        slider.addEventListener("touchstart", (e) =>
+            startDrag(e.touches[0].clientX)
+        );
+        window.addEventListener("touchmove", (e) =>
+            duringDrag(e.touches[0].clientX)
+        );
+        window.addEventListener("touchend", endDrag);
+
+        return () => {
+            slider.removeEventListener("mousedown", (e) => startDrag(e.clientX));
+            window.removeEventListener("mousemove", (e) => duringDrag(e.clientX));
+            window.removeEventListener("mouseup", endDrag);
+
+            slider.removeEventListener("touchstart", (e) =>
+                startDrag(e.touches[0].clientX)
+            );
+            window.removeEventListener("touchmove", (e) =>
+                duringDrag(e.touches[0].clientX)
+            );
+            window.removeEventListener("touchend", endDrag);
+        };
+    }, [offset]);
 
     /** ----------------------------
       SCROLL MOVEMENT
@@ -184,8 +252,8 @@ const SmoothAlternatingSlider = () => {
                     left: "50%",
                     transform: "translate(-50%, -50%)",
                     background: "black",
-                    width: isXs ? 40 : isSm ? 50 : 58,
-                    height: isXs ? 40 : isSm ? 50 : 58,
+                    width: isXs ? 58 : isSm ? 50 : 58,
+                    height: isXs ? 58 : isSm ? 50 : 58,
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
@@ -196,7 +264,7 @@ const SmoothAlternatingSlider = () => {
                     src={ArrowBackIosNewIcon}
                     onClick={() => slide("left")}
                     style={{
-                        width: isXs ? 14 : 22,
+                        width: isXs ? 22 : 22,
                         position: "absolute",
                         left: isXs ? 5 : 8,
                         cursor: "pointer",
@@ -206,7 +274,7 @@ const SmoothAlternatingSlider = () => {
                     src={ArrowForwardIosIcon}
                     onClick={() => slide("right")}
                     style={{
-                        width: isXs ? 14 : 22,
+                        width: isXs ? 22 : 22,
                         position: "absolute",
                         right: isXs ? 5 : 8,
                         cursor: "pointer",
