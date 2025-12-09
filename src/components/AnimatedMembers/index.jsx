@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./style.css";
 
 import member1 from "../../assets/member1.svg";
 import member2 from "../../assets/member2.svg";
