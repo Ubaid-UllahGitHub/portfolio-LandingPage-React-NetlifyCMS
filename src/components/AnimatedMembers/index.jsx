@@ -113,11 +113,12 @@ export default function AnimatedMembers() {
                     color: "#121314",
                     position: "relative",
                     zIndex: 2,
+                    overflow: "hidden",
                 }}
             >
                 Each of our designers <br />
                 was the best among <br />
-                <span ref={leftWordRef} style={{ display: "inline-block", marginRight: "6px", }}>
+                <span ref={leftWordRef} style={{ display: "inline-block", marginRight: "6px", overflow: "hidden", }}>
                     several
                 </span>
 
@@ -127,6 +128,7 @@ export default function AnimatedMembers() {
                         width: "280px",
                         height: "60px",
                         display: "inline-block",
+                        overflow: "hidden",
                     }}
                 >
                     {images.map((src, i) => (
@@ -145,7 +147,7 @@ export default function AnimatedMembers() {
                     ))}
                 </span>
 
-                <span ref={rightWordRef} style={{ display: "inline-block", marginLeft: "6px" }}>
+                <span ref={rightWordRef} style={{ display: "inline-block", marginLeft: "6px", overflow: "hidden", }}>
                     others
                 </span>
 
