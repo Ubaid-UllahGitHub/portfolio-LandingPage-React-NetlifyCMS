@@ -14,7 +14,7 @@ import totalMember from "../../assets/totalmember.svg";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AnimatedMembers() {
-    const isMobile = window.innerWidth <= 558;
+    const isMobile = window.innerWidth <= 658;
     const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
 
     const containerRef = useRef(null);
@@ -104,12 +104,13 @@ export default function AnimatedMembers() {
         >
             <Typography
                 sx={{
-                    fontSize: isMobile ? "35px" : isTablet ? "48px" : "75px",
+                    fontSize: isMobile ? "30px" : isTablet ? "48px" : "75px",
                     fontWeight: 700,
                     textAlign: "center",
                     letterSpacing: { xs: "-1px", md: "-2px" },
-                    lineHeight: { xs: "48px", md: "85px" },
+                    lineHeight: isMobile ? "40px" : isTablet ? "52px" : "80px",
                     fontFamily: "'Inter Tight', sans-serif",
+                    marginRight: isMobile ? "30px" : isTablet ? "0px" : "0px",
                     color: "#121314",
                     position: "relative",
                     zIndex: 2,
