@@ -32,7 +32,10 @@ const Hero = () => {
                 pb: 6,
             }}
         >
-            <Grid container sx={{ width: "100%", px: 6, position: "relative" }}>
+            <Grid container sx={{
+                width: "100%", px: { xs: 2, sm: 4, md: 6 }, // xs=mobile, sm=tablet, md=desktop
+                position: "relative"
+            }}>
 
                 {/* LEFT — BIG LOGO */}
                 <Grid item xs={12} md={8}>
@@ -49,13 +52,13 @@ const Hero = () => {
                             style={{
                                 width: "100%",
                                 maxWidth: isMobile
-                                    ? "340px"
+                                    ? "240px"
                                     : isTablet
                                         ? "480px"
                                         : "600px",
                                 height: "auto",
                                 position: "relative",
-                                top: isMobile ? -80 : isTablet ? -100 : -136,
+                                top: isMobile ? -50 : isTablet ? -100 : -60,
                             }}
                         />
                     </Box>
