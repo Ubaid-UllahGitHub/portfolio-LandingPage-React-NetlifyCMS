@@ -88,7 +88,7 @@ export default function FooterSection() {
         >
             {/* INNER CONTAINER */}
             <Box sx={{
-                maxWidth: "1600px", width: "95%", paddingTop: { xs: "20px", md: "35px" },
+                maxWidth: "1600px", width: "93%", paddingTop: { xs: "20px", md: "35px" },
                 px: { xs: 1, sm: 2, md: 4 },
                 mx: "auto", backgroundColor: "#1D1D1B", borderTopLeftRadius: "20px", borderTopRightRadius: "20px"
             }}>
@@ -235,6 +235,10 @@ export default function FooterSection() {
                             flexDirection: "column",
                             justifyContent: "flex-end",   // flush to bottom
                             height: "100%",
+                            marginLeft: {
+                                xs: "-20px", // mobile
+                                sm: "-35px", // tablet & desktop
+                            },
 
                         }}
                     >
@@ -246,7 +250,6 @@ export default function FooterSection() {
                                 width: "100%",
                                 maxWidth: "1300px",
                                 marginBottom: 0,
-                                marginLeft: "-20px"
                             }}
                         />
                     </Grid>

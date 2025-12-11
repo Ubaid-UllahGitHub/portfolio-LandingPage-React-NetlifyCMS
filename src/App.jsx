@@ -7,6 +7,7 @@ import ManifestoSection from './components/manifestoSection';
 import MotionSection from './components/MotionSection';
 import FooterSection from './components/FooterSection';
 import VideoSection from './components/VideoSection';
+import PortfolioSection from './components/PortfolioSection';
 // import ServicesStackSection from './components/servicesStackSection';
 import CursorFollower from './components/CursorFollower';
 import AnimatedMembers from './components/AnimatedMembers';
@@ -40,11 +41,11 @@ function App() {
       <ManifestoSection />
       <MotionSection />
       <VideoSection />
+      <PortfolioSection />
       <AnimatedMembers />
       <ContactSection />
       <FooterSection />
 
-      {/* <FooterSection /> */}
     </>
   );
 }

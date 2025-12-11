@@ -125,7 +125,7 @@ const MotionSection = () => {
                         flexDirection: { xs: "column", md: "row" },
                         justifyContent: "space-around",
                         alignItems: "center",
-                        margin: "60px 60px",
+                        margin: { xs: "30px 23px", md: "60px 60px" },
                         gap: { xs: 3, md: 0 },
                     }}
                 >
